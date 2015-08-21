@@ -1,0 +1,42 @@
+﻿/* Page-specific styling */
+
+
+#loggedout {
+    text-align: left;
+}
+
+#samplepanel {
+    text-align: left;
+}
+
+#loggedin { 
+    display: none; 
+}
+
+#header {
+    padding: 4px;
+    border-bottom: 1px solid #000;
+    background: #eee;
+}
+
+#output {
+    padding: 4px;
+}
+
+.card { 
+    display: block; 
+    padding: 2px;
+}
+
+.board {
+    display: block;
+    padding: 2px;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.modal-dialog {
+  padding-top: 15%;
+}

@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="../../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
+
+    <link href="../../Content/Office.css" rel="stylesheet" type="text/css" />
+    <script src="//appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+    <!--    <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>       -->
+    <!--    <script src="../../Scripts/Office/1.0/office.js" type="text/javascript"></script>          -->
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://api.trello.com/1/client.js?key=9f6206539102b83880840d674194c13e&dummy=.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!--<script src="//rolandoj-demo.azurewebsites.net/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="//rolandoj-demo.azurewebsites.net/signalr/hubs"></script>-->
+    <script src="//localhost:44326/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="//localhost:44326/signalr/hubs"></script>
+    <script src="TokenBroker.js" type="text/javascript"></script>
+
+    <script src="trello.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <!-- Page content -->
+    <!--<div id="content-header">
+        <div class="padding">
+            <h3>Welcome to PocketKnife</h3>
+        </div>
+    </div>-->
+    <center><h3>Welcome to PocketKnife</h3></center>
+    <div id="content-main">
+        
+        <div class="padding" align="center">
+            
+            <!--<div id="loggedout">
+                <a id="connectLink" href="#">Connect To Trello</a>
+            </div>
+            <div id="loggedin">
+                <div id="header">
+                    Logged in to as <span id="fullName"></span>
+                    <a id="disconnect" href="#">Log Out</a>
+                </div>
+
+                <div id="output"></div>
+                
+                <a id="addCard" href="#">Add a Card</a>
+            </div>-->
+
+            <div id="loggedout" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Trello</h3>
+                </div>
+                <div class="panel-body">
+                    Connect your Trello account to PocketKnife to save a Card to Trello.
+                    <button id="connectLink" type="button" class="btn btn-primary">Connect to Trello</button>
+                </div>
+            </div>
+            <div id="loggedin" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Trello</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Logged in as <span id="fullName"></span> <br />
+                        <a id="disconnect" href="#">Log Out</a>
+                    </p>
+                    <p><img src="/Images/logo-blue-mobile.png" style="width:75%"/></p>
+                    <button id="post-card" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save a Card</button>
+                    <!--<button style="display: none" id="done-card" class="btn">Card saved to Trello</button>-->
+                </div>
+            </div>
+
+
+            <div id="samplepanel" class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">OneNote</h3>
+                </div>
+                <div class="panel-body">
+                    Connect your Microsoft account to PocketKnife to save info to Evernote.
+                    <button type="button" class="btn btn-success">Connect to OneNote</button>
+                </div>
+            </div>
+
+            <div id="samplepanel" class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Evernote</h3>
+                </div>
+                <div class="panel-body">
+                    Connect your Evernote account to PocketKnife to save info to Evernote.
+                    <button type="button" class="btn btn-info">Connect to Evernote</button>
+                </div>
+            </div>
+
+
+            <div id="samplepanel" class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pocket</h3>
+                </div>
+                <div class="panel-body">
+                    Connect your Pocket account to PocketKnife to save info to Pocket.
+                    <button type="button" class="btn btn-warning">Connect to Pocket</button>
+                </div>
+            </div>
+
+            <div id="samplepanel" class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Basecamp</h3>
+                </div>
+                <div class="panel-body">
+                    Connect your Basecamp account to PocketKnife to save info to Basecamp.
+                    <button type="button" class="btn btn-danger">Connect to Basecamp</button>
+                </div>
+            </div>
+
+
+
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Card</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Title</p><textarea class="form-control col-xs-12" id="name"></textarea>
+
+                                    <p>Description</p><textarea class="form-control col-xs-12" id="desc"></textarea>
+
+                                    <p>Board / List</p><select class="form-control" id="boards"><option>Select ...</option></select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="save-card" data-dismiss="modal" data-toggle="modal" data-target="#modalSuccess">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+            <div class="modal fade" id="modalSuccess" tabindex="-1" role="dialog" aria-labelledby="modalSuccessLabel" aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Card Saved!</h4>
+                        </div>
+                        <div class="modal-body">
+                            Successfully saved card to Trello!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                </div>
+            </div>
+</body>
+
+</html>
