@@ -32,8 +32,8 @@ $(window).load(function () {
 
     function initTrelloAuthPopUp() {
         var sessionId = startTokenBroker(onTokenReceived);
-        //window.open("//rolandoj-demo.azurewebsites.net/App/TrelloAuth/TrelloAuthPopUp.html?sessionId=" + sessionId);
-        window.open("../TrelloAuth/TrelloAuthPopUp.html?sessionId=" + sessionId);
+        window.open("//agave.azurewebsites.net/PocketKnife/App/TrelloAuth/TrelloAuthPopUp.html?sessionId=" + sessionId);
+        //window.open("../TrelloAuth/TrelloAuthPopUp.html?sessionId=" + sessionId);
     }
 
 

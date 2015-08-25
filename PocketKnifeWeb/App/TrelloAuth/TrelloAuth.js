@@ -31,14 +31,14 @@ var onAuthorize = function () {
         };
 
         $.connection.hub.qs = { 'sessionId': urlParams["sessionId"] };
-        //$.connection.hub.url = "//rolandoj-demo.azurewebsites.net/signalr";
-        $.connection.hub.url = "https://localhost:44326/signalr";
+        $.connection.hub.url = "//rolandoj-demo.azurewebsites.net/signalr";
+        //$.connection.hub.url = "https://localhost:44326/signalr";
         $.connection.hub.start().done(function () {
             if (urlParams["sessionId"]) {
-                broker.server.send("TrelloToken", tt);
+                //broker.server.send("TrelloToken", tt);
                 
                 //TODO: For some reason sendToGroup is not found, need to check why, but this is needed instead of plain send to maintain security, otherwise the token is broadcast to all clients
-                //broker.server.sendToGroup(urlParams["sessionId"], "TrelloToken", tt);
+                broker.server.sendToGroup(urlParams["sessionId"], "TrelloToken", tt);
             }
             else {
                 broker.server.send("TrelloToken", tt);

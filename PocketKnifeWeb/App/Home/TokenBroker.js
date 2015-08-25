@@ -11,8 +11,8 @@ function startTokenBroker(onTokenReceived) {
 
     $.connection.hub.stop();
     var sessionId = generateSessionId();
-    //$.connection.hub.url = "https://rolandoj-demo.azurewebsites.net/signalr";
-    $.connection.hub.url = "https://localhost:44326/signalr";
+    $.connection.hub.url = "https://rolandoj-demo.azurewebsites.net/signalr";
+    //$.connection.hub.url = "https://localhost:44326/signalr";
 
     $.connection.hub.qs = { 'sessionId': sessionId};
     // Start the connection.
